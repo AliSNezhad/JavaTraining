@@ -1,3 +1,8 @@
+
+// To run test this class in the Main class, you can copy and paste these codes in the main class:
+// Array numbers = new Array();
+// now by creating the new array object you can use the methods of this class
+
 public class Array {
     private int[] items;
 
@@ -44,15 +49,15 @@ public class Array {
 
     public void removeFirst() {
         int [] newItems = new int[items.length - 1];
-        for (int i=0; i < items.length; i++) {
-            newItems[i] = items[i+1];
+        for (int i=1; i < items.length; i++) {
+            newItems[i-1] = items[i];
         }
         items = newItems;
     }
 
     public void removeLast() {
         int [] newItems = new int[items.length - 1];
-        for (int i=0; i < newItems.length; i++) {
+        for (int i=0; i < (newItems.length); i++) {
             newItems[i] = items[i];
         }
         items = newItems;
@@ -122,6 +127,7 @@ public class Array {
         for (int item : items) {
             System.out.print(item + " ");
         }
+        System.out.println("");
     }
 
 }

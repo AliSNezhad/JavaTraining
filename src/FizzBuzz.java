@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+// To run test this class in the Main class, you can copy and paste these codes in the main class:
+
+// FizzBuzz game = new FizzBuzz();
+// game.run();
+
 public class FizzBuzz {
     private Scanner scanner;
 
@@ -21,24 +26,24 @@ public class FizzBuzz {
 
     public void run() {
         while (true) {
-        System.out.print("Enter your number to check or q to quit: ");
-        String input = scanner.nextLine();
+            System.out.print("Enter your number to check or q to quit: ");
+            String input = scanner.nextLine();
 
-        if (input.equalsIgnoreCase("q")) {
-            System.out.println("Exiting the program.");
-            break;
+            if (input.equalsIgnoreCase("q")) {
+                System.out.println("Exiting the program.");
+                break;
+            }
+
+            try {
+                int number = Integer.parseInt(input);
+                fizzBuzzChecker(number);
+
+            } catch (NumberFormatException e) {
+                System.out.println("Enter an Integer value.");
+            }
         }
-
-        try {
-            int number = Integer.parseInt(input);
-            fizzBuzzChecker(number);
-
-        } catch (NumberFormatException e) {
-            System.out.println("Enter an Integer value.");
-        }
-    }
 
         scanner.close();
-}
+    }
 
 }
