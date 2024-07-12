@@ -41,7 +41,34 @@ public class LinkedList {
         size++;
     }
 
-    //add by index in the middle
+    public void addByIndex(int index, int data) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+        else if (index == size) {
+            addLast(data);
+            return;
+        }
+        else {
+            Node newNode = new Node(data);
+            int counter = 0;
+            Node current = first;
+            while (counter != (size)) {
+                if (counter == index) {
+                    newNode.next = current;
+                    getPrevious(current).next = newNode;
+                    size++;
+                    return;
+                }
+                current = current.next;
+                counter++;
+            }
+        }
+    }
 
     public void removeFirst() {
         if (first == null) {
@@ -51,9 +78,9 @@ public class LinkedList {
         if (first == last)
             first = last = null;
         else {
-            var second = first.next;
+            var temp = first.next;
             first.next = null;
-            first = second;
+            first = temp;
         }
         size--;
     }
@@ -73,7 +100,32 @@ public class LinkedList {
         size--;
     }
 
-    //remove by index in the middle
+    public void removeByIndex(int index){
+        if (index < 0 || index > (size-1)) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            removeFirst();
+            return;
+        } else if (index == (size-1)) {
+            removeLast();
+            return;
+        } else {
+            int counter = 0;
+            Node current = first;
+            while (counter != (size-1)) {
+                if (counter == index) {
+                    var previous = getPrevious(current);
+                    previous.next = current.next;
+                    current.next = null;
+                    size--;
+                    return;
+                }
+                current = current.next;
+                counter++;
+            }
+        }
+    }
 
     private Node getPrevious(Node node) {
         var previous = first;
@@ -114,6 +166,21 @@ public class LinkedList {
     }
 
     //reverse
+    public void reverse () {
+        if (first == null) return;
+
+        var next = first;
+        var current = first.next;
+        while (current != null) {
+            var temp = current.next;
+            current.next = next;
+            next = current;
+            current = temp;
+        }
+        last = first;
+        first.next = null;
+        first = next;
+    }
     //getKthFromFirst
     //getKthFromLast
     //hasLoop

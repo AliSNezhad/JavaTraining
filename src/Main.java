@@ -6,26 +6,16 @@ public class Main {
         list.addFirst(20);
         list.addFirst(10);
         list.addLast(30);
+        list.addByIndex(0, 0);
+        list.addByIndex(1,5);
+        list.addByIndex(5,40);
+        list.addByIndex(5,35);
         list.print();
-        Array listToArray = list.toArray();
-
-        System.out.println(list.contains(10));
-        System.out.println(list.contains(30));
-        System.out.println(list.indexOf(10));
-        System.out.println(list.indexOf(20));
-        System.out.println(list.indexOf(30));
-
-        list.removeFirst();
+        System.out.println(list.size());
+        list.reverse();
         list.print();
-        list.removeLast();
+        System.out.println(list.size());
+        list.addFirst(100);
         list.print();
-
-        System.out.println(list.contains(10));
-        System.out.println(list.contains(30));
-        System.out.println(list.indexOf(10));
-        System.out.println(list.indexOf(20));
-        System.out.println(list.indexOf(30));
-
-        listToArray.print();
     }
 }
