@@ -165,7 +165,6 @@ public class LinkedList {
         return array;
     }
 
-    //reverse
     public void reverse () {
         if (first == null) return;
 
@@ -181,8 +180,38 @@ public class LinkedList {
         first.next = null;
         first = next;
     }
-    //getKthFromFirst
+    
+    public int getKthFromFirst (int k) {
+        if (k<0 || k>size)
+            throw new IndexOutOfBoundsException();
+        var result = first;
+        int counter = 1;
+        while (counter != k) {
+            result = result.next;
+            counter++;
+        }
+        return result.value;
+    }
     //getKthFromLast
+    public int getKthFromLast (int k) {
+        if (first == null)
+            throw new IllegalArgumentException();
+        
+        var desire = first;
+        var lasElement= first;
+        for (int i = 0; i < k-1; i++) {
+            lasElement = lasElement.next;
+            if (lasElement == null)
+                throw new IllegalArgumentException();
+        }
+
+        while (lasElement != last) {
+            desire = desire.next;
+            lasElement = lasElement.next;
+        }
+
+        return desire.value;
+    }
     //hasLoop
     //createWithLoop
 
@@ -195,5 +224,24 @@ public class LinkedList {
         System.out.println();
     }
 
-    //printMiddle
+    public void printMiddle () {
+        if (first == null)
+            throw new IllegalStateException();
+
+        if (size%2 == 1) {
+            var desire = first;
+            for (int i = 1; i < ((size+1)/2); i++) {
+                desire = desire.next;
+            }
+            System.out.print(desire.value);
+            System.out.println();
+        } else {
+            var desire = first;
+            for (int i = 1; i < (size/2); i++) {
+                desire = desire.next;
+            }
+            System.out.print(desire.value + " " + desire.next.value);
+            System.out.println();
+        }
+    }
 }
