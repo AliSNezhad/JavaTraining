@@ -41,7 +41,34 @@ public class LinkedList {
         size++;
     }
 
-    //add by index in the middle
+    public void addByIndex(int index, int data) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+        else if (index == size) {
+            addLast(data);
+            return;
+        }
+        else {
+            Node newNode = new Node(data);
+            int counter = 0;
+            Node current = first;
+            while (counter != (size)) {
+                if (counter == index) {
+                    newNode.next = current;
+                    getPrevious(current).next = newNode;
+                    size++;
+                    return;
+                }
+                current = current.next;
+                counter++;
+            }
+        }
+    }
 
     public void removeFirst() {
         if (first == null) {
@@ -51,9 +78,9 @@ public class LinkedList {
         if (first == last)
             first = last = null;
         else {
-            var second = first.next;
+            var temp = first.next;
             first.next = null;
-            first = second;
+            first = temp;
         }
         size--;
     }
@@ -73,7 +100,32 @@ public class LinkedList {
         size--;
     }
 
-    //remove by index in the middle
+    public void removeByIndex(int index){
+        if (index < 0 || index > (size-1)) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            removeFirst();
+            return;
+        } else if (index == (size-1)) {
+            removeLast();
+            return;
+        } else {
+            int counter = 0;
+            Node current = first;
+            while (counter != (size-1)) {
+                if (counter == index) {
+                    var previous = getPrevious(current);
+                    previous.next = current.next;
+                    current.next = null;
+                    size--;
+                    return;
+                }
+                current = current.next;
+                counter++;
+            }
+        }
+    }
 
     private Node getPrevious(Node node) {
         var previous = first;
@@ -113,9 +165,53 @@ public class LinkedList {
         return array;
     }
 
-    //reverse
-    //getKthFromFirst
+    public void reverse () {
+        if (first == null) return;
+
+        var next = first;
+        var current = first.next;
+        while (current != null) {
+            var temp = current.next;
+            current.next = next;
+            next = current;
+            current = temp;
+        }
+        last = first;
+        first.next = null;
+        first = next;
+    }
+    
+    public int getKthFromFirst (int k) {
+        if (k<0 || k>size)
+            throw new IndexOutOfBoundsException();
+        var result = first;
+        int counter = 1;
+        while (counter != k) {
+            result = result.next;
+            counter++;
+        }
+        return result.value;
+    }
     //getKthFromLast
+    public int getKthFromLast (int k) {
+        if (first == null)
+            throw new IllegalArgumentException();
+        
+        var desire = first;
+        var lasElement= first;
+        for (int i = 0; i < k-1; i++) {
+            lasElement = lasElement.next;
+            if (lasElement == null)
+                throw new IllegalArgumentException();
+        }
+
+        while (lasElement != last) {
+            desire = desire.next;
+            lasElement = lasElement.next;
+        }
+
+        return desire.value;
+    }
     //hasLoop
     //createWithLoop
 
@@ -128,5 +224,24 @@ public class LinkedList {
         System.out.println();
     }
 
-    //printMiddle
+    public void printMiddle () {
+        if (first == null)
+            throw new IllegalStateException();
+
+        if (size%2 == 1) {
+            var desire = first;
+            for (int i = 1; i < ((size+1)/2); i++) {
+                desire = desire.next;
+            }
+            System.out.print(desire.value);
+            System.out.println();
+        } else {
+            var desire = first;
+            for (int i = 1; i < (size/2); i++) {
+                desire = desire.next;
+            }
+            System.out.print(desire.value + " " + desire.next.value);
+            System.out.println();
+        }
+    }
 }
