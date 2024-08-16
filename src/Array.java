@@ -1,8 +1,4 @@
 
-// To run and test this class in the Main class, you can copy and paste these codes in the main class:
-// Array numbers = new Array();
-// now by creating the new Array object you can use the methods of this class
-
 public class Array {
     private int[] items;
 

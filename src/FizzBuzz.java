@@ -1,10 +1,5 @@
 import java.util.Scanner;
 
-// To run and test this class in the Main class, you can copy and paste these codes in the main class:
-
-// FizzBuzz game = new FizzBuzz();
-// game.run();
-
 public class FizzBuzz {
     private Scanner scanner;
 

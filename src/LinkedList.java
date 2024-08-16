@@ -1,9 +1,5 @@
 import java.util.NoSuchElementException;
 
-// To run and test this class in the Main class, you can copy and paste these codes in the main class:
-// LinkedList numbers = new LinkedList();
-// now by creating the new LinkedList object you can use the methods of this class
-
 public class LinkedList {
 
     private class Node {
