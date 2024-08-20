@@ -1,3 +1,5 @@
+package sarhang.datastructure;
+
 import java.util.NoSuchElementException;
 
 public class LinkedListByArray {
@@ -188,7 +190,7 @@ public class LinkedListByArray {
         }
         return result.value;
     }
-    //getKthFromLast
+
     public int getKthFromLast (int k) {
         if (first == null)
             throw new IllegalArgumentException();
@@ -208,6 +210,7 @@ public class LinkedListByArray {
 
         return desire.value;
     }
+
     //hasLoop
     //createWithLoop
 

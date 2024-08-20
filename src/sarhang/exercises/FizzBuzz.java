@@ -1,3 +1,5 @@
+package sarhang.exercises;
+
 import java.util.Scanner;
 
 public class FizzBuzz {
