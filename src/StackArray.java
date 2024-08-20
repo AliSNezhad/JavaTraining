@@ -4,11 +4,12 @@ import java.util.EmptyStackException;
 public class StackArray {
     private int[] stack;
     private int size;
-    private int count = 0;
+    private int count;
 
     public StackArray(int size) {
         this.size = size;
         stack = new int[size];
+        count = 0;
     }
 
     public void push( int value ) {
@@ -25,10 +26,7 @@ public class StackArray {
             return this;
         } else {
             StackArray temp = new StackArray(newSize);
-            this.size = newSize;
-            int oldCount = count;
-            this.count = 0;
-            for ( int i = 0; i < oldCount; i++ ) {
+            for ( int i = 0; i < this.count; i++ ) {
                 temp.push(stack[i]);
             }
             return temp;
