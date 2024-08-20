@@ -1,12 +1,12 @@
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-public class StackArray {
+public class StackByArray {
     private int[] stack;
     private int size;
     private int count;
 
-    public StackArray(int size) {
+    public StackByArray(int size) {
         this.size = size;
         stack = new int[size];
         count = 0;
@@ -20,12 +20,12 @@ public class StackArray {
         }
     }
 
-    public StackArray resize( int newSize ) {
+    public StackByArray resize(int newSize ) {
         if( newSize <= count-1) {
             System.out.println("You can not resize the Stack to smaller Stack!");
             return this;
         } else {
-            StackArray temp = new StackArray(newSize);
+            StackByArray temp = new StackByArray(newSize);
             for ( int i = 0; i < this.count; i++ ) {
                 temp.push(stack[i]);
             }

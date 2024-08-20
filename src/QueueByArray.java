@@ -1,12 +1,12 @@
 import java.util.Arrays;
 
-public class ArrayQueue {
+public class QueueByArray {
     private int[] queue;
     private int front;
     private int rear;
     private int count;
 
-    public ArrayQueue(int size) {
+    public QueueByArray(int size) {
         queue = new int[size];
     }
 
@@ -51,9 +51,22 @@ public class ArrayQueue {
         return count;
     }
 
+    public static void queueReverse(QueueByArray queue) {
+        StackByArray tempStack = new StackByArray(queue.size());
+        while (!queue.isEmpty()) {
+            tempStack.push(queue.dequeue());
+        }
+        while (!tempStack.isEmpty()) {
+            queue.enqueue(tempStack.pop());
+        }
+    }
+
     @Override
     public String toString() {
         return Arrays.toString(queue);
     }
 
+    public void print() {
+        System.out.println(Arrays.toString(queue));
+    }
 }

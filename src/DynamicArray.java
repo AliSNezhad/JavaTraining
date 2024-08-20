@@ -1,8 +1,8 @@
 
-public class Array {
+public class DynamicArray {
     private int[] items;
 
-    public Array() {
+    public DynamicArray() {
         items = new int[0];
     }
 
@@ -109,8 +109,8 @@ public class Array {
         return min;
     }
 
-    public Array intersect(Array other) {
-        Array intersection = new Array();
+    public DynamicArray intersect(DynamicArray other) {
+        DynamicArray intersection = new DynamicArray();
 
         for (int item : items)
             if (other.indexOf(item) >= 0)

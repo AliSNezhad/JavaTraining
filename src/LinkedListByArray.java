@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class LinkedList {
+public class LinkedListByArray {
 
     private class Node {
         private int value;
@@ -151,8 +151,8 @@ public class LinkedList {
         return size;
     }
 
-    public Array toArray () {
-        Array array = new Array();
+    public DynamicArray toArray () {
+        DynamicArray array = new DynamicArray();
         Node current = first;
         while (current != null) {
             array.insertLast(current.value);
