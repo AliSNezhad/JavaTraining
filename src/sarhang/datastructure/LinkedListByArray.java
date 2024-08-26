@@ -1,5 +1,7 @@
 package sarhang.datastructure;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.NoSuchElementException;
 
 public class LinkedListByArray {
@@ -125,6 +127,7 @@ public class LinkedListByArray {
         }
     }
 
+    @Nullable
     private Node getPrevious(Node node) {
         var previous = first;
         while (previous != null) {
